@@ -15,7 +15,6 @@
 
 ### Association
 - has_many :products
-- has_many :addresses
 - has_many :orders
 
 
@@ -24,9 +23,9 @@
 | Column                  | Type        | Options                             |
 | ----------------------- | ----------- | ----------------------------------- |
 | product_name            | string      | null: false                         |
-| product_explanation     | text        | null: false                         |
-| product_category_id     | integer     | null: false                         |
-| product_condition_id    | integer     | null: false                         |
+| explanation             | text        | null: false                         |
+| category_id             | integer     | null: false                         |
+| condition_id            | integer     | null: false                         |
 | delivery_fee_id         | integer     | null: false                         |
 | delivery_destination_id | integer     | null: false                         |
 | delivery_days_id        | integer     | null: false                         |
@@ -51,7 +50,7 @@
 | order                   | references  | null: false, foreign_key: true      |
 
 ### Association
-- belongs_to :orders
+- belongs_to :order
 
 
 # ordersテーブル
@@ -62,6 +61,5 @@
 | product                 | references  | null: false, foreign_key: true      |
 
 ### Association
-- belongs_to :user
 - belongs_to :product
 - has_one    :address
