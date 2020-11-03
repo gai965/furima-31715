@@ -15,16 +15,16 @@
 
 ### Association
 - has_many :products
-- has_many :buys
+- has_many :addresses
+- has_many :orders
 
 
 # productsテーブル
 
 | Column                  | Type        | Options                             |
 | ----------------------- | ----------- | ----------------------------------- |
-| image                   |             | null: false                         |
-| product_name            | text        | null: false, lengh: {maximum: 40}   |
-| product_explanation     | text        | null: false, lengh: {maximum: 1000} |
+| product_name            | string      | null: false                         |
+| product_explanation     | text        | null: false                         |
 | product_category_id     | integer     | null: false                         |
 | product_condition_id    | integer     | null: false                         |
 | delivery_fee_id         | integer     | null: false                         |
@@ -35,10 +35,11 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :buy
+- belongs_to :address
+- belongs_to :order
 
 
-# buysテーブル
+# addressesテーブル
 
 | Column                  | Type        | Options                             |
 | ----------------------- | ----------- | ----------------------------------- |
@@ -49,6 +50,18 @@
 | buliding_name           | string      |                                     |
 | phone_number            | integer     | null: false                         |
 | user                    | references  | null: false, foreign_key: true      |
+
+### Association
+- belongs_to :user
+- belongs_to :product
+
+
+# ordersテーブル
+
+| Column                  | Type        | Options                             |
+| ----------------------- | ----------- | ----------------------------------- |
+| user                    | references  | null: false, foreign_key: true      |
+| product                 | references  | null: false, foreign_key: true      |
 
 ### Association
 - belongs_to :user
