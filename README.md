@@ -35,8 +35,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :address
-- belongs_to :order
+- has_one    :order
 
 
 # addressesテーブル
@@ -49,11 +48,10 @@
 | house_number            | string      | null: false                         |
 | buliding_name           | string      |                                     |
 | phone_number            | integer     | null: false                         |
-| user                    | references  | null: false, foreign_key: true      |
+| order                   | references  | null: false, foreign_key: true      |
 
 ### Association
-- belongs_to :user
-- belongs_to :product
+- belongs_to :orders
 
 
 # ordersテーブル
@@ -66,3 +64,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
+- has_one    :address
