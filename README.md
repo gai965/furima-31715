@@ -22,7 +22,7 @@
 
 | Column                  | Type        | Options                             |
 | ----------------------- | ----------- | ----------------------------------- |
-| product_name            | string      | null: false                         |
+| name                    | string      | null: false                         |
 | explanation             | text        | null: false                         |
 | category_id             | integer     | null: false                         |
 | condition_id            | integer     | null: false                         |
@@ -46,7 +46,7 @@
 | city                    | string      | null: false                         |
 | house_number            | string      | null: false                         |
 | buliding_name           | string      |                                     |
-| phone_number            | integer     | null: false                         |
+| phone_number            | string      | null: false                         |
 | order                   | references  | null: false, foreign_key: true      |
 
 ### Association
