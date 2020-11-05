@@ -63,6 +63,10 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+        @user.password = 'abcdef'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
 
       it 'パスワードは、確認用を含めて2回入力しないと登録できない' do
@@ -72,8 +76,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'パスワードとパスワード（確認用）、値の一致しないと登録できない' do
-        another_user = FactoryBot.build(:user)
-        @user.password_confirmation = another_user.password
+        @user.password_confirmation = FactoryBot.build(:user).password
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
