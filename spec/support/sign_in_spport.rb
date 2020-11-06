@@ -1,5 +1,5 @@
 module SignInSupport
-  def sign_in(user)
+  def sign_in(_user)
     # トップページに遷移する
     visit root_path
     # 新規登録ボタンを押す

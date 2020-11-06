@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "Products", type: :system do
+RSpec.describe 'Products', type: :system do
   before do
     @product = FactoryBot.build(:product)
     @product.image = fixture_file_upload('app/assets/images/test/test.png')
     @user = FactoryBot.build(:user)
   end
-  
+
   describe '商品出品' do
     context 'ログイン時の作業' do
       it '商品出品ができることを確認' do
@@ -31,7 +31,7 @@ RSpec.describe "Products", type: :system do
         # 現在のページがトップページなのか確認
         expect(current_path).to eq root_path
         # 画像が出品されているか確認
-        expect(page).to have_selector(".item-img")
+        expect(page).to have_selector('.item-img')
       end
       it '入力に問題がある場合でエラーが表示されるのを確認' do
         # サインインする
@@ -43,7 +43,7 @@ RSpec.describe "Products", type: :system do
         # 「出品する」ボタンを押す
         click_on '出品する'
         # エラーメッセージが表示されているか確認
-        expect(page).to have_selector(".error-alert")
+        expect(page).to have_selector('.error-alert')
       end
     end
     context 'ログアウト時の作業' do

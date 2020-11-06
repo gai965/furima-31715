@@ -16,7 +16,7 @@ class Product < ApplicationRecord
   end
 
   with_options presence: true, numericality: { other_than: 0, message: 'Select' } do
-    validates :category_id 
+    validates :category_id
     validates :condition_id
     validates :prefecture_id
     validates :delivery_fee_id
@@ -24,9 +24,8 @@ class Product < ApplicationRecord
   end
 
   with_options presence: true,
-    numericality: {only_integer: true, message: 'Half-width number'}, 
-    inclusion: { in: 300..9999999, message: 'Out of setting range'}   do
-      validates :price
+               numericality: { only_integer: true, message: 'Half-width number' },
+               inclusion: { in: 300..9_999_999, message: 'Out of setting range' } do
+    validates :price
   end
-
 end

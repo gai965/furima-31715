@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except:[:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @product = Product.all
@@ -7,9 +7,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
 
   def create
@@ -22,8 +20,8 @@ class ProductsController < ApplicationController
   end
 
   private
+
   def product_params
     params.require(:product).permit(:image, :name, :explanation, :category_id, :condition_id, :delivery_fee_id, :prefecture_id, :delivery_days_id, :price).merge(user_id: current_user.id)
   end
-
 end
