@@ -50,9 +50,9 @@ RSpec.describe Product, type: :model do
       end
 
       it '発送元の地域についての情報がないと登録できない' do
-        @product.precture_id = 0
+        @product.prefecture_id = 0
         @product.valid?
-        expect(@product.errors.full_messages).to include("Precture Select")
+        expect(@product.errors.full_messages).to include("Prefecture Select")
       end
 
       it '発送日までの日数についての情報がないと登録できない' do
