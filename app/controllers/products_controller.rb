@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order('created_at DESC')
+    # binding.pry
   end
 
   def new
