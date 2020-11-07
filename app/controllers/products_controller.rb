@@ -6,12 +6,13 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
     redirect_to action: :index unless user_signed_in?
+    @product = Product.new
   end
 
   def create
-    if Product.create(product_params)
+    @product = Product.new(product_params)
+    if @product.save
       redirect_to root_path
     else
       render :new
@@ -20,6 +21,21 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+    redirect_to action: :index unless current_user.id == @product.user_id
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    if @product.save
+      redirect_to product_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   private
