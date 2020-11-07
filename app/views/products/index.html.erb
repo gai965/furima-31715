@@ -124,9 +124,11 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
-    
+
+    <ul class='item-lists'>
       <%# 部分テンプレートによる商品一覧を表示 %>
       <%= render partial: "product", collection: @product%>
+    </ul>
   </div>
   
 </div>
