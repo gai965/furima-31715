@@ -127,7 +127,7 @@
 
     <ul class='item-lists'>
       <%# 出品商品がある場合 %>
-      <% if @product != nil %>
+      <% if @product.present? %>
           <%# 部分テンプレートによる商品一覧を表示 %>
           <%= render partial: "product", collection: @product%>
 
