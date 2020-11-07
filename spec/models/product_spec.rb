@@ -7,7 +7,7 @@ RSpec.describe Product, type: :model do
   end
 
   describe '商品出品機能' do
-    context '商品出品登録ができないとき' do
+    context '商品出品登録ができるとき' do
       it '全ての情報が揃っていれば登録できる' do
         expect(@product).to be_valid
       end
