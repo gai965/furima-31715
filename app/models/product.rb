@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-  belongs_to  :user
+  belongs_to       :user
+  has_one          :order, dependent: :destroy 
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
