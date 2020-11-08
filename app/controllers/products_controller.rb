@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    redirect_to action: :show unless current_user.id == @product.user_id
     @product.delete
     redirect_to root_path
   end
