@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many   :products
-  belongs_to :order
+  has_many   :order
 
   validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze, message: 'Include both letters and numbers'
 
