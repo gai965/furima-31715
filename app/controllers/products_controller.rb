@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:edit, :show, :update, :destroy]
+  before_action :sale_flag_confirmation, only: [:edit]
 
   def index
     @product = Product.all.order('created_at DESC')
@@ -43,6 +44,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def sale_flag_confirmation
+    redirect_to root_path unless @product.sale_flag
+  end
 
   def product_params
     params.require(:product).permit(:image, :name, :explanation, :category_id, :condition_id, :delivery_fee_id, :prefecture_id, :delivery_days_id, :price).merge(user_id: current_user.id)
