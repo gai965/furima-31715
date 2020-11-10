@@ -8,7 +8,7 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag @product.image ,class:"item-box-img" %>
-      <% @product.sale_flag = false %>
+      
       <% unless @product.sale_flag %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
