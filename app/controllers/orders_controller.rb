@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     if @order_address.valid?
       pay_item
       @order_address.save
-      @product.sale_flag = 0
+      @product.sale_flag = false
       @product.save
       redirect_to root_path
     else
