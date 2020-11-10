@@ -43,11 +43,11 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
   def sale_flag_confirmation
     redirect_to root_path unless @product.sale_flag
   end
-
-  private
 
   def product_params
     params.require(:product).permit(:image, :name, :explanation, :category_id, :condition_id, :delivery_fee_id, :prefecture_id, :delivery_days_id, :price).merge(user_id: current_user.id)

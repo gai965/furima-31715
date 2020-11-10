@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(user_id: current_user.id, product_id: params[:product_id])
     @order_address = OrderAddress.new(address_params)
     if @order_address.valid?
       pay_item
@@ -18,23 +17,22 @@ class OrdersController < ApplicationController
       @product.save
       redirect_to root_path
     else
-      @order.destroy
       render :index
     end
   end
 
+  private
+
   def sale_flag_confirmation
     redirect_to root_path unless @product.sale_flag
   end
-
-  private
 
   def set_product
     @product = Product.find(params[:product_id])
   end
 
   def address_params
-    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(order_id: @order.id, token: params[:token])
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(token: params[:token])
   end
 
   def pay_item
