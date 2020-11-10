@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Address, type: :model do
+RSpec.describe OrderAddress, type: :model do
   before do
-    @address = FactoryBot.build(:address)
+    @address = FactoryBot.build(:order_address)
   end
 
   describe '商品購入機能' do
@@ -12,6 +12,12 @@ RSpec.describe Address, type: :model do
       end
     end
     context '商品出品登録ができないとき' do
+      it 'カード情報がないと登録できない' do
+        @address.token = nil
+        @address.valid?
+        expect(@address.errors.full_messages).to include("Token can't be blank")
+      end
+
       it '郵便番号がないと登録できない' do
         @address.postal_code = nil
         @address.valid?
@@ -39,7 +45,7 @@ RSpec.describe Address, type: :model do
       it '番地がないと登録できない' do
         @address.house_number = nil
         @address.valid?
-        expect(@address.errors.full_messages).to include('Category Select')
+        expect(@address.errors.full_messages).to include("House number can't be blank")
       end
 
       it '電話番号がないと登録できない' do
@@ -54,10 +60,10 @@ RSpec.describe Address, type: :model do
         expect(@address.errors.full_messages).to include('Phone number Input only number')
       end
 
-      it '電話番号がないと登録できない' do
-        @address.phone_number = nil
+      it '電話番号が11桁未満ないと登録できない' do
+        @address.phone_number = 123_456_789
         @address.valid?
-        expect(@address.errors.full_messages).to include("Phone number can't be blank")
+        expect(@address.errors.full_messages).to include('Phone number Input only number')
       end
     end
   end

@@ -30,6 +30,7 @@
 | precture_id             | integer     | null: false                         |
 | delivery_days_id        | integer     | null: false                         |
 | price                   | integer     | null: false                         |
+| soldout_flag            | boolean     | null: false                         |
 | user                    | references  | null: false, foreign_key: true      |
 
 ### Association
