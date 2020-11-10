@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     if @order_address.valid?
       pay_item
       @order_address.save
-      @product.sale_flag = false
+      @product.sale_flag = 0
       @product.save
       redirect_to root_path
     else
@@ -23,12 +23,12 @@ class OrdersController < ApplicationController
 
   private
 
-  def sale_flag_confirmation
-    redirect_to root_path unless @product.sale_flag
-  end
-
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def sale_flag_confirmation
+    redirect_to root_path unless @product.sale_flag == 1
   end
 
   def address_params

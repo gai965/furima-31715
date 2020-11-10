@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_124058) do
     t.integer "prefecture_id", null: false
     t.integer "delivery_days_id", null: false
     t.integer "price", null: false
-    t.boolean "sale_flag", default: true
+    t.integer "sale_flag", default: 1
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -129,7 +129,7 @@
       <%# 出品商品がある場合 %>
       <% if @product.present? %>
           <%# 部分テンプレートによる商品一覧を表示 %>
-          <%= render partial: "product", collection: @product%>
+          <%= render partial: "product", collection: @product %>
 
       <%# 商品がない場合のダミーを表示 %>
       <% else %>
