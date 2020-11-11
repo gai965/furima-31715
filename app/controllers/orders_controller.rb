@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def sale_flag_confirmation
-    redirect_to root_path unless @product.sale_flag == 1
+    redirect_to root_path unless @product.sale_flag
   end
 
   def address_params
